@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: website-depi-deployment
+  namespace: depi-lab
+  labels:
+    app: depi-lab
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: depi-lab
+  template:
+    metadata:
+      labels:
+        app: depi-lab
+    spec:
+      containers:
+        - name: website-depi-container
+          image: sayedatwhdevops/depi-argocd-webite:latest
+          ports:
+            - containerPort: 80
